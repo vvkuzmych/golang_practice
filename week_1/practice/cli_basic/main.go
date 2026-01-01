@@ -5,6 +5,9 @@ import (
 	"os"
 )
 
+// Назва програми (для допомоги)
+const programName = "cli-demo"
+
 func main() {
 	// Приклад роботи з аргументами командного рядка
 
@@ -27,9 +30,9 @@ func main() {
 	} else {
 		fmt.Println("Аргументи не передано.")
 		fmt.Println("\nВикористання:")
-		fmt.Printf("  %s <аргумент1> <аргумент2> ...\n", os.Args[0])
+		fmt.Printf("  %s <аргумент1> <аргумент2> ...\n", programName)
 		fmt.Println("\nПриклад:")
-		fmt.Printf("  %s привіт світ\n", os.Args[0])
+		fmt.Printf("  %s привіт світ\n", programName)
 	}
 
 	fmt.Println("\n=== Кінець програми ===")

@@ -6,6 +6,9 @@ import (
 	"strconv"
 )
 
+// Назва програми
+const programName = "calculator"
+
 func main() {
 	fmt.Println("=== CLI Калькулятор ===\n")
 
@@ -68,7 +71,7 @@ func main() {
 
 func printUsage() {
 	fmt.Println("Використання:")
-	fmt.Printf("  %s <число1> <операція> <число2>\n\n", os.Args[0])
+	fmt.Printf("  %s <число1> <операція> <число2>\n\n", programName)
 
 	fmt.Println("Операції:")
 	fmt.Println("  +  або  add     - Додавання")
@@ -77,8 +80,8 @@ func printUsage() {
 	fmt.Println("  /  або  div     - Ділення")
 
 	fmt.Println("\nПриклади:")
-	fmt.Printf("  %s 10 + 5\n", os.Args[0])
-	fmt.Printf("  %s 20 - 7\n", os.Args[0])
-	fmt.Printf("  %s 3.14 mul 2\n", os.Args[0])
-	fmt.Printf("  %s 100 / 4\n", os.Args[0])
+	fmt.Printf("  %s 10 + 5\n", programName)
+	fmt.Printf("  %s 20 - 7\n", programName)
+	fmt.Printf("  %s 3.14 mul 2\n", programName)
+	fmt.Printf("  %s 100 / 4\n", programName)
 }

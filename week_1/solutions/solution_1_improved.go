@@ -7,12 +7,15 @@ import (
 	"time"
 )
 
+// Константа для назви програми
+const programName = "greet"
+
 func main() {
 	fmt.Println("=== Привітання користувача ===\n")
 
 	// Перевірка кількості аргументів
 	if len(os.Args) < 2 {
-		//printUsage()
+		printUsage()
 		os.Exit(1)
 	}
 
@@ -103,4 +106,16 @@ func main() {
 		fmt.Printf("%%v:  %v\n", age)
 		fmt.Printf("%%T:  %T\n", age)
 	}
+}
+
+func printUsage() {
+	fmt.Println("❌ Помилка: не вказано ім'я\n")
+	fmt.Println("Використання:")
+	fmt.Printf("  %s <ім'я> [вік]\n\n", programName)
+	fmt.Println("Аргументи:")
+	fmt.Println("  <ім'я>  - Ваше ім'я (обов'язково)")
+	fmt.Println("  [вік]   - Ваш вік, число 0-120 (опційно)")
+	fmt.Println("\nПриклади:")
+	fmt.Printf("  %s Іван\n", programName)
+	fmt.Printf("  %s Марія 25\n", programName)
 }

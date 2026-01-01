@@ -53,7 +53,7 @@ func NewStudent(firstName, lastName string, age int) Student {
 
 func main() {
 	fmt.Println("=== Інформація про студентів ===\n")
-
+	var university string = "DPI"
 	// 1. Повна ініціалізація
 	student1 := Student{
 		FirstName:  "Іван",
@@ -61,7 +61,7 @@ func main() {
 		Age:        20,
 		GPA:        3.8,
 		IsActive:   true,
-		University: nil,
+		University: &university,
 	}
 
 	// 2. Часткова ініціалізація (інші поля отримають zero values)

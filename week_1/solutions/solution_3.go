@@ -8,6 +8,8 @@ import (
 	"time"
 )
 
+const programName1 = "greet"
+
 // Task представляє одне завдання
 type Task struct {
 	ID          int
@@ -188,7 +190,7 @@ func deleteTask(list *TodoList, id int) {
 // printHelp виводить довідку
 func printHelp() {
 	fmt.Println("\n=== TODO Manager - Довідка ===\n")
-	fmt.Println("Використання: todo <команда> [аргументи]\n")
+	fmt.Printf("Використання: %s <команда> [аргументи]\n\n", programName1)
 
 	fmt.Println("Доступні команди:")
 	fmt.Println("  add <text>       - Додати нове завдання")
@@ -198,11 +200,11 @@ func printHelp() {
 	fmt.Println("  help             - Показати цю довідку (або: -h, --help)")
 
 	fmt.Println("\nПриклади:")
-	fmt.Println("  todo add \"Вивчити Go\"")
-	fmt.Println("  todo add \"Написати тести\"")
-	fmt.Println("  todo list")
-	fmt.Println("  todo done 1")
-	fmt.Println("  todo delete 2")
+	fmt.Printf("  %s add \"Вивчити Go\"\n", programName1)
+	fmt.Printf("  %s add \"Написати тести\"\n", programName1)
+	fmt.Printf("  %s list\n", programName1)
+	fmt.Printf("  %s done 1\n", programName1)
+	fmt.Printf("  %s delete 2\n", programName1)
 
 	fmt.Println("\nПідказки:")
 	fmt.Println("  💡 Використовуйте лапки для завдань з пробілами")
