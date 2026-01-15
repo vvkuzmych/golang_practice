@@ -4,7 +4,7 @@
 
 ### 1. Перейти в папку week_3
 ```bash
-cd /Users/vkuzm/GolandProjects/golang_practice/week_3
+cd /Users/vkuzm/GolandProjects/golang_practice/week_3_rune_bytes
 ```
 
 ### 2. Прочитати README

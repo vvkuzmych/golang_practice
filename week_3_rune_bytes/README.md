@@ -182,7 +182,7 @@ week_3/
 
 ```bash
 # Перейти в theory
-cd /Users/vkuzm/GolandProjects/golang_practice/week_3/theory
+cd /Users/vkuzm/GolandProjects/golang_practice/week_3_rune_bytes/theory
 cat 01_byte_basics.md
 
 # Запустити перший приклад
