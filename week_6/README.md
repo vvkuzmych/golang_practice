@@ -50,6 +50,7 @@
 - ✅ Select
 - ✅ Sync Package (Mutex, WaitGroup, Once)
 - ✅ Конкурентні Патерни
+- ✅ Pipeline Pattern (Fan-Out/Fan-In)
 
 ---
 
@@ -67,7 +68,8 @@ week_6/
 │   ├── 04_microservices.md           # Мікросервіси
 │   ├── 05_databases.md               # Бази даних
 │   ├── 06_networking.md              # Нетворкінг
-│   └── 07_goroutines_concurrency.md  # Goroutines
+│   ├── 07_goroutines_concurrency.md  # Goroutines
+│   └── 08_pipeline_pattern.md        # Pipeline Pattern
 │
 ├── practice/                          # 💻 Практика
 │   ├── 01_oop/                       # ООП приклади
