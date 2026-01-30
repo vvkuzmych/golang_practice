@@ -203,6 +203,14 @@ case val, ok := <-ch1:
 case val := <-ch2:
     // ...
 }
+
+select {
+case val, ok := <-ch1
+    if !ok {
+        ch1 = nil
+    }
+case val := <-ch3
+}
 ```
 
 ---
@@ -218,6 +226,12 @@ go func() {
     responseChan <- replyCh // Передаємо канал
     result := <-replyCh      // Чекаємо відповідь
 }()
+
+go func() {
+	for i = 0; i > 0; i++ {
+		//do smth
+    }
+}
 
 // Отримуємо канал і відправляємо відповідь
 ch := <-responseChan

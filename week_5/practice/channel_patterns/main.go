@@ -77,11 +77,12 @@ func example4_RangeOverChannel() {
 	fmt.Println("4️⃣ Range over Channel")
 	fmt.Println("─────────────────────────────────────────")
 
-	ch := make(chan int, 5)
+	ch := make(chan int)
+	ch1 := make(chan int)
 
 	// Producer
 	go func() {
-		for i := 1; i <= 5; i++ {
+		for i := 1; i <= 6; i++ {
 			ch <- i
 		}
 		close(ch) // ВАЖЛИВО: закриваємо після відправки всіх даних
@@ -90,6 +91,25 @@ func example4_RangeOverChannel() {
 	// Consumer: range автоматично завершується після close()
 	for value := range ch {
 		fmt.Printf("   Received: %d\n", value)
+	}
+
+	done := make(chan bool)
+
+	go func() {
+		for i := 1; i <= 6; i++ {
+			ch1 <- i
+		}
+		done <- true // Сигналізуємо, що закінчили
+	}()
+
+	for {
+		select {
+		case value := <-ch1:
+			fmt.Printf("   Received: %d\n", value)
+		case <-done:
+			fmt.Println("✓ Producer закінчив")
+			return
+		}
 	}
 	fmt.Println("✓ Range завершився після close()\n")
 }
@@ -368,18 +388,18 @@ func main() {
 	fmt.Println("╚══════════════════════════════════════════╝")
 	fmt.Println()
 
-	example1_UnbufferedChannel()
-	example2_BufferedChannel()
-	example3_CloseChannel()
+	//example1_UnbufferedChannel()
+	//example2_BufferedChannel()
+	//example3_CloseChannel()
 	example4_RangeOverChannel()
-	example5_UnidirectionalChannels()
-	example6_SelectBasic()
-	example7_SelectDefault()
-	example8_SelectTimeout()
-	example9_NilChannel()
-	example10_Pipeline()
-	example11_FanOut()
-	example12_FanIn()
+	//example5_UnidirectionalChannels()
+	//example6_SelectBasic()
+	//example7_SelectDefault()
+	//example8_SelectTimeout()
+	//example9_NilChannel()
+	//example10_Pipeline()
+	//example11_FanOut()
+	//example12_FanIn()
 
 	fmt.Println("📝 Висновки:")
 	fmt.Println("─────────────────────────────────────────")
