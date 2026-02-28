@@ -42,7 +42,7 @@ func main() {
 	<-or(
 		time.After(2*time.Hour),
 		time.After(5*time.Minute),
-		time.After(1*time.Second),
+		time.After(3*time.Second),
 		time.After(1*time.Hour),
 		time.After(10*time.Second),
 		time.After(12*time.Second),
