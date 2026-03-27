@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sort"
 	"sync"
 )
 
@@ -42,16 +43,52 @@ func send(inputCh <-chan string, n int) <-chan string {
 }
 
 func main() {
-	channel := make(chan string)
+	//channel := make(chan string)
+	//
+	//go func() {
+	//	defer close(channel)
+	//	for i := 0; i < 5; i++ {
+	//		channel <- fmt.Sprintf("value %d", i)
+	//	}
+	//}()
+	//
+	//for value := range send(parse(channel), 2) {
+	//	fmt.Println(value)
+	//}
+	fmt.Println("╔════════════════════════════════════════════════╗")
+	fmt.Println("║  Спосіб 1: З індексами + сортування           ║")
+	fmt.Println("╚════════════════════════════════════════════════╝")
+	fmt.Println()
 
+	channel := make(chan IndexedValue)
+
+	// Генеруємо дані з індексами
 	go func() {
 		defer close(channel)
 		for i := 0; i < 5; i++ {
-			channel <- "value"
+			channel <- IndexedValue{
+				Index: i,
+				Value: fmt.Sprintf("value %d", i),
+			}
 		}
 	}()
 
-	for value := range send(parse(channel), 2) {
-		fmt.Println(value)
+	// Збираємо всі результати
+	var results []IndexedValue
+	for value := range sendWithIndex(parseWithIndex(channel), 6) {
+		results = append(results, value)
 	}
+
+	// Сортуємо по індексу
+	sort.Slice(results, func(i, j int) bool {
+		return results[i].Index < results[j].Index
+	})
+
+	// Виводимо в правильному порядку
+	fmt.Println("Результат (відсортований):")
+	for _, r := range results {
+		fmt.Printf("[%d] %s\n", r.Index, r.Value)
+	}
+
+	fmt.Println()
 }

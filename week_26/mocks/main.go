@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"net/url"
 	"sort"
-	"time"
 )
 
 // URLSorter interface - dependency injection pattern
@@ -122,31 +121,31 @@ func main() {
 	resultCh2 := svcMock.ProcessAsync(ctx, []string{"a.com", "b.com", "c.com"})
 	result2 := <-resultCh2
 	fmt.Printf("Mock result: %v\n\n", result2.URLs)
-
-	// Example 3: Context cancellation
-	fmt.Println("3. Context Cancellation:")
-	ctxCancel, cancel := context.WithTimeout(context.Background(), 1*time.Millisecond)
-	defer cancel()
-
-	time.Sleep(10 * time.Millisecond) // Ensure timeout
-	resultCh3 := svc.ProcessAsync(ctxCancel, []string{"x.com", "y.com"})
-	result3 := <-resultCh3
-	if result3.Err != nil {
-		fmt.Printf("Expected error: %v\n\n", result3.Err)
-	}
-
-	// Example 4: Callback pattern
-	fmt.Println("4. Callback Pattern:")
-	done := make(chan bool)
-	svc.ProcessWithCallback(ctx, []string{"example.com", "test.com"}, func(urls []string, err error) {
-		if err != nil {
-			fmt.Printf("Callback error: %v\n", err)
-		} else {
-			fmt.Printf("Callback result: %v\n", urls)
-		}
-		done <- true
-	})
-	<-done
+	//
+	//// Example 3: Context cancellation
+	//fmt.Println("3. Context Cancellation:")
+	//ctxCancel, cancel := context.WithTimeout(context.Background(), 1*time.Millisecond)
+	//defer cancel()
+	//
+	//time.Sleep(10 * time.Millisecond) // Ensure timeout
+	//resultCh3 := svc.ProcessAsync(ctxCancel, []string{"x.com", "y.com"})
+	//result3 := <-resultCh3
+	//if result3.Err != nil {
+	//	fmt.Printf("Expected error: %v\n\n", result3.Err)
+	//}
+	//
+	//// Example 4: Callback pattern
+	//fmt.Println("4. Callback Pattern:")
+	//done := make(chan bool)
+	//svc.ProcessWithCallback(ctx, []string{"example.com", "test.com"}, func(urls []string, err error) {
+	//	if err != nil {
+	//		fmt.Printf("Callback error: %v\n", err)
+	//	} else {
+	//		fmt.Printf("Callback result: %v\n", urls)
+	//	}
+	//	done <- true
+	//})
+	//<-done
 
 	fmt.Println()
 	fmt.Println("=== Demo Complete ===")
